@@ -1,0 +1,15 @@
+export const images = {
+  logo: require("./images/logo.png"),
+  slider_1: require("./images/slider_1.png"),
+  back: require("./images/back.png"),
+  user: require("./images/user.png"),
+  plus: require("./images/plus.png"),
+  username: require("./images/username.png"),
+  us: require("./images/us.png"),
+  email: require("./images/email.png"),
+  calender: require("./images/calender.png"),
+  city: require("./images/city.png"),
+  state: require("./images/state.png"),
+  country: require("./images/country.png"),
+  zip_code: require("./images/zip_code.png"),
+};
