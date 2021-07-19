@@ -9,6 +9,6 @@ export const BackToolbar = ({navigation}) => {
     <TouchableOpacity onPress={()=>navigation.pop()}>
       <Image source={images.back} style={{ width: 20, height: 20, resizeMode: "contain" }} />
     </TouchableOpacity>
-    <Text style={ChakraTypography.SmallMedium}>{"Back"}</Text>
+    <Text style={ChakraTypography.SmallBold}>{"Back"}</Text>
   </View>;
 };

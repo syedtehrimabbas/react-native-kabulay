@@ -4,26 +4,15 @@ import { AppStyles } from "../../theme/styles";
 import UserContext from "../../AuthContaxt";
 import { images } from "../../assets";
 import { Typography } from "../../theme/Typography";
-import LinearGradient from "react-native-linear-gradient";
 import gradiant_colors from "../../theme/gradiant_colors";
 import { WELCOME } from "../../constants/ScreenNames";
 import { GradiantButton } from "../../core/GradiantButton";
 import { Image, Text, View } from "react-native";
-import { ChakraTypography } from "../../theme/ChakraTypography";
+import { GradiantCircle } from "../../core/GradiantCircle";
 
 
 const SelectLanguage = ({ navigation }) => {
   const state = React.useContext(UserContext);
-  const LanguageComponent = ({ colors, text }) => {
-    return <LinearGradient colors={colors} style={[AppStyles.centerItems, {
-      width: 80,
-      height: 80,
-      borderRadius: 40,
-      margin: 10,
-    }]}>
-      <Text style={[ChakraTypography.SmallRegular]}>{text}</Text>
-    </LinearGradient>;
-  };
 
   return (
     <AppContainer
@@ -37,14 +26,14 @@ const SelectLanguage = ({ navigation }) => {
           <Text style={[Typography.Normal, { marginTop: 150 }]}>{"Select Language"}</Text>
           <View style={{ flex: 1, marginTop: 10 }}>
             <View style={{ flexDirection: "row" }}>
-              <LanguageComponent colors={gradiant_colors.pinkGradiant} text={"Dari"} />
-              <LanguageComponent colors={gradiant_colors.yellowGradiant} text={"Pashto"} />
+              <GradiantCircle size={80} colors={gradiant_colors.pinkGradiant} text={"Dari"} />
+              <GradiantCircle size={80} colors={gradiant_colors.yellowGradiant} text={"Pashto"} />
 
             </View>
 
             <View style={{ flexDirection: "row" }}>
-              <LanguageComponent colors={gradiant_colors.greenGradiant} text={"Urdu"} />
-              <LanguageComponent colors={gradiant_colors.blueGradiant} text={"English"} />
+              <GradiantCircle size={80} colors={gradiant_colors.greenGradiant} text={"Urdu"} />
+              <GradiantCircle size={80} colors={gradiant_colors.blueGradiant} text={"English"} />
 
             </View>
 

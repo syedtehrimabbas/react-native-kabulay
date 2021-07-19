@@ -19,6 +19,8 @@ const colors = {
   dark_grey: "#82817D",
   greyTabs: "#E1DEE5",
   pinkLight: "#FD82FE",
+  lightDark: "#838590",
+  lightBlueDark: "#9AA1C4",
   // your colors
 };
 

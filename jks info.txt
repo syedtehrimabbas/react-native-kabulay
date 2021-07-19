@@ -1,0 +1,3 @@
+key-aloas: kabulay_key
+password: aHUFHuZCLbUUjuxrzADJKHckRRdgxQAy
+key-password: aHUFHuZCLbUUjuxrzADJKHckRRdgxQAy

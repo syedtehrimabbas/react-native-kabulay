@@ -7,6 +7,7 @@ export const AppStyles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: colors.primaryDarkColor,
+    height:'100%'
     // paddingLeft: 5,
     // paddingRight: 5
   },

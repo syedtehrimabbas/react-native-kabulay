@@ -29,6 +29,12 @@ export const ChakraTypography = {
     color: "#FFFFFF",
     fontFamily: "ChakraPetch-Medium",
   },
+  SmallBold: {
+    fontSize: 13,
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    fontFamily: "ChakraPetch-Bold",
+  },
   ALargeBold: {
     fontSize: 23,
     color: "#FFFFFF",

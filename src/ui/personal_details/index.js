@@ -11,6 +11,7 @@ import { Typography } from "../../theme/Typography";
 import { images } from "../../assets";
 import colors from "../../theme/colors";
 import { ChakraTypography } from "../../theme/ChakraTypography";
+import { PERSONAL_DETAILS_VIEW } from "../../constants/ScreenNames";
 
 const PersonalDetails = ({navigation}) => {
   const state = React.useContext(UserContext);
@@ -27,7 +28,7 @@ const PersonalDetails = ({navigation}) => {
           <View style={[AppStyles.columnContainer]}>
             <BackToolbar navigation={navigation}/>
 
-            <Text style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Personal\n" +
+            <Text style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Personal" +
             "Details"}</Text>
 
             <TouchableOpacity activeOpacity={.7} style={{ width: 100, alignSelf: "center" }}>
@@ -206,7 +207,7 @@ const PersonalDetails = ({navigation}) => {
             <GradiantButton
               label="Next"
               onPress={() => {
-                console.log("Button press");
+                navigation.navigate(PERSONAL_DETAILS_VIEW)
               }}
               styles={{ marginTop: 15, marginBottom: 15 }}
               backgroundColor={gradiant_colors.pinkGradiant}
