@@ -8,21 +8,31 @@
 
 import React from "react";
 import "react-native-gesture-handler";
-import { LogBox, Platform, UIManager, useColorScheme } from "react-native";
+import { Image, LogBox, Platform, UIManager, useColorScheme } from "react-native";
 
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
-  BANK_ACCOUNT_ENTRY, CHECKIN_FIRST,
+  BANK_ACCOUNT_ENTRY,
+  CHECKIN_FIRST,
+  DASHBOARD,
   FOLLOW_KABULAY,
+  NOTIFICATIONS,
   OTP_VERIFICATION,
   PAYMENT_SELECTED,
-  PAYMENT_SETUP, PAYPAL_PAYMENT_SELECTED,
+  PAYMENT_SETUP,
+  PAYMENTS,
+  PAYPAL_PAYMENT_SELECTED,
   PERSONAL_DETAILS,
   PERSONAL_DETAILS_VIEW,
-  SELECT_LANGUAGE, SETUP_PAYPAL, SETUP_WUNION,
-  WELCOME, WU_PAYMENT_SELECTED,
+  PROFILE,
+  SELECT_LANGUAGE,
+  SETUP_PAYPAL,
+  SETUP_WUNION, TASK_DETAILS, TASK_DETAILS_START,
+  TASKS,
+  WELCOME, WITHDRAW,
+  WU_PAYMENT_SELECTED,
 } from "./src/constants/ScreenNames";
 import SelectLanguage from "./src/ui/select_language";
 import Splash from "./src/ui/splash";
@@ -40,8 +50,80 @@ import PayPalPaymentSelected from "./src/ui/paypal_payment_selected";
 import SetupWUnion from "./src/ui/setup_w_union";
 import WUPaymentSelected from "./src/ui/wu_payment_selected";
 import CheckinFirst from "./src/ui/checkin_first";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import colors from "./src/theme/colors";
+import { images } from "./src/assets";
+import Tasks from "./src/ui/dashboard/tasks";
+import Payments from "./src/ui/dashboard/payments";
+import Notifications from "./src/ui/dashboard/notifications";
+import Profile from "./src/ui/dashboard/profile";
+import TaskDetails from "./src/ui/dashboard/tasks/task_details";
+import TaskDetailsStart from "./src/ui/dashboard/tasks/task_details_start";
+import Withdraw from "./src/ui/dashboard/payments/withdraw";
 
 const RootStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+const Dashboard = () => {
+  return (
+    <Tab.Navigator
+
+      shifting={true}
+      backBehavior="none"
+
+      activeColor={colors.iconsColor}
+      inactiveColor={colors.iconsColor}
+      tabBarOptions={{
+        showLabel: true,
+        activeTintColor: colors.primaryColor,
+      }}
+    >
+      <Tab.Screen
+        name={TASKS}
+        component={Tasks}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Image source={images.nav_tasks}
+                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={PAYMENTS}
+        component={Payments}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Image source={images.nav_payments}
+                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={NOTIFICATIONS}
+        component={Notifications}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Image source={images.nav_notifications}
+                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={PROFILE}
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Image source={images.nav_profile}
+                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          ),
+        }}
+      />
+
+    </Tab.Navigator>
+  );
+};
 
 export default function App() {
   const isDarkMode = useColorScheme() === "dark";
@@ -81,7 +163,7 @@ export default function App() {
     return (
       <UserProvider value={state}>
         <NavigationContainer>
-          <RootStack.Navigator headerMode="none" initialRouteName="SelectLanguage"
+          <RootStack.Navigator headerMode="none" initialRouteName={SELECT_LANGUAGE}
                                backBehavior="none">
             <RootStack.Screen name={SELECT_LANGUAGE} component={SelectLanguage} />
             <RootStack.Screen name={WELCOME} component={Welcome} />
@@ -97,6 +179,10 @@ export default function App() {
             <RootStack.Screen name={SETUP_WUNION} component={SetupWUnion} />
             <RootStack.Screen name={WU_PAYMENT_SELECTED} component={WUPaymentSelected} />
             <RootStack.Screen name={CHECKIN_FIRST} component={CheckinFirst} />
+            <RootStack.Screen name={DASHBOARD} component={Dashboard} />
+            <RootStack.Screen name={TASK_DETAILS} component={TaskDetails} />
+            <RootStack.Screen name={TASK_DETAILS_START} component={TaskDetailsStart} />
+            <RootStack.Screen name={WITHDRAW} component={Withdraw} />
           </RootStack.Navigator>
         </NavigationContainer>
       </UserProvider>

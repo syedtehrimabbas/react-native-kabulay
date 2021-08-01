@@ -3,7 +3,7 @@ const colors = {
   primaryDarkColor: "#03156C",
   blueLight: "#253AC8",
   accentColor: "#FFFFFF",
-  iconsColor: "#FF333C",
+  iconsColor: "#2048E8",
   redColor: "#FF444C",
   borderColor: "#1B93E9",
   white: "#fff",
@@ -21,6 +21,7 @@ const colors = {
   pinkLight: "#FD82FE",
   lightDark: "#838590",
   lightBlueDark: "#9AA1C4",
+  green: "#0CFC6C",
   // your colors
 };
 

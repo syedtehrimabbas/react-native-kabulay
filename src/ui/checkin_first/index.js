@@ -7,7 +7,7 @@ import gradiant_colors from "../../theme/gradiant_colors";
 import { GradiantButton } from "../../core/GradiantButton";
 import { images } from "../../assets";
 import { ChakraTypography } from "../../theme/ChakraTypography";
-import { Typography } from "../../theme/Typography";
+import { DASHBOARD } from "../../constants/ScreenNames";
 
 const CheckinFirst = ({ navigation }) => {
   const state = React.useContext(UserContext);
@@ -31,18 +31,18 @@ const CheckinFirst = ({ navigation }) => {
           <ImageBackground resizeMode="contain" source={images.blue_waves}
                            style={{
                              flex: 1,
-                             marginTop:-100,
+                             marginTop: -100,
                              width: "100%",
                              justifyContent: "center",
                              alignItems: "center",
                            }}>
-            <Text style={[ChakraTypography.Normal, {fontSize: 60,alignSelf:'center'}]}>{"30"}</Text>
+            <Text style={[ChakraTypography.Normal, { fontSize: 60, alignSelf: "center" }]}>{"30"}</Text>
           </ImageBackground>
 
           <GradiantButton
             label="Check-In"
             onPress={() => {
-
+              navigation.navigate(DASHBOARD);
             }}
             styles={{ position: "absolute", marginTop: 10, bottom: 20 }}
             backgroundColor={gradiant_colors.pinkGradiant}

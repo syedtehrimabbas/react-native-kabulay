@@ -30,4 +30,9 @@ export const images = {
   wunion: require("./images/wunion.png"),
   upload: require("./images/upload.png"),
   blue_waves: require("./images/blue_waves.png"),
+  nav_tasks: require("./images/nav_tasks.png"),
+  nav_payments: require("./images/nav_payments.png"),
+  nav_notifications: require("./images/nav_alerts.png"),
+  nav_profile: require("./images/nav_profile.png"),
+  twitterImg: require("./images/ic_twitter_img.png"),
 };

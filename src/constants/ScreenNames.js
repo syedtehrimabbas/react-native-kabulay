@@ -12,3 +12,14 @@ export const PAYPAL_PAYMENT_SELECTED = "PayPalPaymentSelected";
 export const SETUP_WUNION = "SetupWUnion";
 export const WU_PAYMENT_SELECTED = "WUPaymentSelected";
 export const CHECKIN_FIRST = "CheckinFirst";
+
+
+export const DASHBOARD = "Dashboard";
+export const TASKS = "Tasks";
+export const PAYMENTS = "Payments";
+export const NOTIFICATIONS = "Notifications";
+export const PROFILE = "Profile";
+
+export const TASK_DETAILS = "TaskDetails";
+export const TASK_DETAILS_START = "TaskDetailsStart";
+export const WITHDRAW = "Withdraw";
