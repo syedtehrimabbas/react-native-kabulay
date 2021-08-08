@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import AppContainer from "../../core/AppContainer";
 import { AppStyles } from "../../theme/styles";
 import UserContext from "../../AuthContaxt";
@@ -17,8 +17,9 @@ const FollowKabulay = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer]}>
+        <View style={[AppStyles.columnContainer,{backgroundColor:'transparent'}]}>
           <BackToolbar navigation={navigation} />
           <View style={{ flexDirection: "row", justifyContent: "space-between", paddingStart: 10 }}>
             <View style={{ flexDirection: "column" }}>

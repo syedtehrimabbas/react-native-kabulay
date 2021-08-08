@@ -32,8 +32,9 @@ const Welcome = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer]}>
+        <View style={[AppStyles.columnContainer,{backgroundColor:'transparent'}]}>
           <Image
             source={images.logo}
             style={{ width: 144, height: 151, alignSelf: "center" }} />

@@ -27,9 +27,10 @@ const Withdraw = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer, { padding: hp(2) }]}>
-          <BackToolbar navigation={navigation} />
+        <View style={[AppStyles.columnContainer, { backgroundColor:'transparent',padding: hp(2) }]}>
+        <BackToolbar navigation={navigation} />
 
           <Text style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Widthdraw\n" +
           "Money"}</Text>
@@ -44,7 +45,6 @@ const Withdraw = ({ navigation }) => {
 
           <Text style={[ChakraTypography.SmallBold, {
             marginStart: 20,
-            marginTop: 10,
             fontSize: 15,
             alignSelf:'center'
           }]}>{"Bank Account"}</Text>
@@ -64,19 +64,20 @@ const Withdraw = ({ navigation }) => {
             color: colors.pinkLight
           }]}>{"$10.50"}</Text>
 
-          <View style={[AppStyles.inputContainerStyle, { marginTop: 20 }]}>
+          <View style={[AppStyles.inputContainerStyle, { marginTop: 20 ,justifyContent:'center'}]}>
             <TextInput
-              style={[ChakraTypography.SmallBold, AppStyles.inputStyle, {
+              style={[ChakraTypography.SmallBold, {
                 color: "rgba(255, 255, 255, 0.87)",
                 fontWeight: "bold",
                 fontFamily: "ChakraPetch-Bold",
                 textAlign:'center',
-                fontSize: 20
+                fontSize: 20,
+                alignSelf:'center'
               }]}
               placeholderTextColor={"rgba(255, 255, 255, 0.87)"}
               returnKeyType="done"
               keyboardType={"numeric"}
-              placeholder="Enter amount"
+              placeholder="Enter Amount"
             />
 
           </View>
@@ -84,7 +85,6 @@ const Withdraw = ({ navigation }) => {
           <GradiantButton
             label="Request Withdraw"
             onPress={() => {
-              navigation.navigate(PAYPAL_PAYMENT_SELECTED);
             }}
             styles={{ position: "absolute", bottom: 20 }}
             backgroundColor={gradiant_colors.pinkGradiant}

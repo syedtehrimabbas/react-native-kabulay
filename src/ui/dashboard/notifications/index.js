@@ -7,7 +7,6 @@ import colors from "../../../theme/colors";
 import AppContainer from "../../../core/AppContainer";
 import { images } from "../../../assets";
 import { ChakraTypography } from "../../../theme/ChakraTypography";
-import { GradiantOval } from "../../../core/GradiantOval";
 import gradiant_colors from "../../../theme/gradiant_colors";
 import { TASK_DETAILS } from "../../../constants/ScreenNames";
 import LinearGradient from "react-native-linear-gradient";
@@ -39,8 +38,9 @@ const Notifications = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer, { padding: hp(2) }]}>
+        <View style={[AppStyles.columnContainer, { backgroundColor: "transparent", padding: hp(2) }]}>
 
           <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
             <View style={{ flexDirection: "column" }}>
@@ -75,12 +75,11 @@ const Notifications = ({ navigation }) => {
           >
             <FlatList
               data={[0, 0, 0, 0, 0, 0, 0, 0]}
-              renderItem={({ item }) => <TouchableOpacity activeOpacity={.7}
-                                                          onPress={() => navigation.navigate(TASK_DETAILS)}>
+              renderItem={({ item }) => <TouchableOpacity activeOpacity={.7}>
                 <View style={{
                   borderRadius: 15,
-                  margin:10,
-                  backgroundColor:colors.primaryDarkColor,
+                  margin: 10,
+                  backgroundColor: colors.primaryDarkColor,
                   padding: 10,
                   flexDirection: "row",
                 }}>

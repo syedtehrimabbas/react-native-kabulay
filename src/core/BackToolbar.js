@@ -7,8 +7,8 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 export const BackToolbar = ({navigation}) => {
   return <View style={{ flexDirection: "row", marginTop: 20 }}>
     <TouchableOpacity onPress={()=>navigation.pop()}>
-      <Image source={images.back} style={{ width: 20, height: 20, resizeMode: "contain" }} />
+      <Image source={images.back} style={{ width: 25, height: 25, resizeMode: "contain" }} />
     </TouchableOpacity>
-    <Text style={ChakraTypography.SmallBold}>{"Back"}</Text>
+    <Text style={[ChakraTypography.SmallBold,{alignSelf:'center',fontSize: 15}]}>{"Back"}</Text>
   </View>;
 };

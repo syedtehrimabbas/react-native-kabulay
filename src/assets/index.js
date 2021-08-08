@@ -35,4 +35,8 @@ export const images = {
   nav_notifications: require("./images/nav_alerts.png"),
   nav_profile: require("./images/nav_profile.png"),
   twitterImg: require("./images/ic_twitter_img.png"),
+  bg_large_squares: require("./images/backgrounds/bg_large_squares.jpeg"),
+  bg_small_squares: require("./images/backgrounds/bg_small_squares.jpeg"),
+  bg_stars: require("./images/backgrounds/bg_stars.jpeg"),
+  bg_shapes: require("./images/backgrounds/bg_shapes.jpeg"),
 };

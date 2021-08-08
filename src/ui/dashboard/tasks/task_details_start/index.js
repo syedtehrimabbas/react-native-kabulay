@@ -22,13 +22,13 @@ const TaskDetailsStart = ({ navigation }) => {
     };
   }, []);
 
-
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
         <ScrollView>
-          <View style={[AppStyles.columnContainer, { padding: hp(2) }]}>
+          <View style={[AppStyles.columnContainer, {backgroundColor:'transparent', padding: hp(2) }]}>
             <BackToolbar navigation={navigation} />
             <Text style={[Typography.Normal, { marginTop: 10, fontSize: 22 }]}>{"Task Details"}</Text>
 
@@ -39,13 +39,13 @@ const TaskDetailsStart = ({ navigation }) => {
 
             <Text style={[ChakraTypography.Normal, {
               fontSize: 15,
-              color: colors.white,
+              color: colors.white_60,
             }]}>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n" +
             "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}</Text>
 
             <Text style={[ChakraTypography.SmallBold, { fontSize: 19 }]}>{"Instructions:"}</Text>
             <FlatList data={[1, 1, 1, 1, 1, 1]}
-                      renderItem={({index,item}) => <Text style={ChakraTypography.SmallRegular}>{`${index+1} - Loream Ipsum dolaremit sit. consectiurt`}</Text>}
+                      renderItem={({index,item}) => <Text style={[ChakraTypography.SmallRegular,{color: colors.white_80}]}>{`${index+1} - Loream Ipsum dolaremit sit. consectiurt`}</Text>}
             />
 
             <ImageBackground resizeMode="contain" source={images.blue_waves}
@@ -61,7 +61,7 @@ const TaskDetailsStart = ({ navigation }) => {
               <Text style={[ChakraTypography.Normal, {fontSize: 20,alignSelf:'center'}]}>{"12:03:57"}</Text>
             </ImageBackground>
 
-            <Text style={[ChakraTypography.Normal, { fontSize: 19, marginTop:20,alignSelf:'center',color: colors.green }]}>{"Budget: $10"}</Text>
+            <Text style={[ChakraTypography.Normal, { fontSize: 19, marginTop:20,alignSelf:'center',color: colors.blueColor }]}>{"Budget: $10"}</Text>
 
 
             <GradiantButton

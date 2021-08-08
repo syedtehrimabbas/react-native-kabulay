@@ -39,9 +39,10 @@ const PersonalDetailsView = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
         <ScrollView>
-          <View style={[AppStyles.columnContainer]}>
+          <View style={[AppStyles.columnContainer,{backgroundColor:'transparent'}]}>
             <BackToolbar navigation={navigation} />
             <View style={{ flexDirection: "row", justifyContent: "space-between", paddingStart: 10 }}>
               <View style={{ flexDirection: "column" }}>

@@ -36,9 +36,10 @@ const PayPalPaymentSelected = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer, { height: "100%" }]}>
-          <BackToolbar navigation={navigation} />
+        <View style={[AppStyles.columnContainer, { height: "100%", backgroundColor: "transparent" }]}>
+        <BackToolbar navigation={navigation} />
 
           <Text style={[Typography.Normal, { marginStart: 15, fontSize: 22, marginTop: 10 }]}>{"Payout\n" +
           "Setting"}</Text>

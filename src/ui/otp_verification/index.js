@@ -11,6 +11,7 @@ import { Typography } from "../../theme/Typography";
 import OtpInputs from "../../core/OtpInputs";
 import { ChakraTypography } from "../../theme/ChakraTypography";
 import { PAYMENT_SETUP } from "../../constants/ScreenNames";
+import { images } from "../../assets";
 
 const OTPVerification = ({ navigation }) => {
   const state = React.useContext(UserContext);
@@ -20,8 +21,9 @@ const OTPVerification = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer]}>
+        <View style={[AppStyles.columnContainer,{backgroundColor:'transparent'}]}>
           <BackToolbar navigation={navigation} />
           <Text style={[Typography.Normal, {
             marginStart: 10,

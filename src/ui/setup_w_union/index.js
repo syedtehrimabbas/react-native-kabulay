@@ -18,9 +18,10 @@ const SetupWUnion = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer, { height: "100%" }]}>
-          <BackToolbar navigation={navigation} />
+        <View style={[AppStyles.columnContainer, { height: "100%", backgroundColor: "transparent" }]}>
+        <BackToolbar navigation={navigation} />
 
           <Text style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Setup Payout for\n" +
           "Western Union"}</Text>
@@ -37,18 +38,16 @@ const SetupWUnion = ({ navigation }) => {
               textAlign:'center',
               color: colors.lightBlueDark,
             }]}>{"Please upload a legal ID Card, Driving Licence\nor Passport"}</Text>
-
+            <GradiantButton
+              label="Select Picture"
+              iconSrc={images.upload}
+              onPress={() => {
+                navigation.navigate(WU_PAYMENT_SELECTED);
+              }}
+              styles={{marginTop:10}}
+              backgroundColor={gradiant_colors.pinkGradiant}
+            />
           </View>
-
-          <GradiantButton
-            label="Select Picture"
-            iconSrc={images.upload}
-            onPress={() => {
-              navigation.navigate(WU_PAYMENT_SELECTED);
-            }}
-            styles={{ position: "absolute", bottom: 20 }}
-            backgroundColor={gradiant_colors.pinkGradiant}
-          />
 
         </View>
       } />

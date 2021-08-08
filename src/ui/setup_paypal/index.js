@@ -18,9 +18,10 @@ const SetupPayPal = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer, { height: "100%" }]}>
-          <BackToolbar navigation={navigation} />
+        <View style={[AppStyles.columnContainer, { height: "100%", backgroundColor: "transparent" }]}>
+        <BackToolbar navigation={navigation} />
 
           <Text style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Setup Payout for \n" +
           "Paypal"}</Text>

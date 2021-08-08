@@ -38,8 +38,9 @@ const Tasks = ({ navigation }) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer, { padding: hp(2) }]}>
+        <View style={[AppStyles.columnContainer, { backgroundColor:'transparent',padding: hp(2) }]}>
 
           <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
             <View style={{ flexDirection: "column" }}>

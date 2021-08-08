@@ -23,9 +23,10 @@ const PersonalDetails = ({navigation}) => {
   return (
     <AppContainer
       state={state}
+      background={images.bg_small_squares}
       children={
         <ScrollView>
-          <View style={[AppStyles.columnContainer]}>
+          <View style={[AppStyles.columnContainer,{backgroundColor:'transparent'}]}>
             <BackToolbar navigation={navigation}/>
 
             <Text style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Personal" +
