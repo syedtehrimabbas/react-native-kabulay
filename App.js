@@ -135,12 +135,15 @@ export default function App() {
   /*App states*/
   const [isSplash, setSplash] = React.useState(true);
   const [user, setUser] = React.useState({});
+  const [loading, setLoading] = React.useState(false);
 
   let state = {
     splash: isSplash,
     setSplash: setSplash,
     user: user,
     setUser: setUser,
+    loading: loading,
+    setLoading: setLoading,
   };
 
   React.useEffect(() => {

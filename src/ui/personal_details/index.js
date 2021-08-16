@@ -12,25 +12,76 @@ import { images } from "../../assets";
 import colors from "../../theme/colors";
 import { ChakraTypography } from "../../theme/ChakraTypography";
 import { PERSONAL_DETAILS_VIEW } from "../../constants/ScreenNames";
+import HttpService from "../../networking";
 
-const PersonalDetails = ({navigation}) => {
+const PersonalDetails = ({ navigation }) => {
   const state = React.useContext(UserContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [countryCode, setCountryCode] = useState("");
+  const [countryCode, setCountryCode] = useState("+92");
   const [phone, setPhone] = useState("");
   const [dob, setDOB] = useState("");
+  const [locationData, setLocationDate] = useState({
+    lat: "",
+    lng: "",
+    city: "Lahore",
+    state: "Punjab",
+    country: "Pakistan",
+    zip_code: "53700",
+  });
+
+  const onCreateUser = () => {
+    state.setLoading(true);
+    let data=new FormData();
+
+    data.append("name",name)
+    let formData = {
+      name: name,
+      email: email,
+      dob: dob,
+      mobile: phone,
+      address: "",
+      country: locationData.country,
+      ccode: countryCode,
+      city: locationData.city,
+      state: locationData.state,
+      zipcode: locationData.zip_code,
+      fb_username: "",
+      ins_username: "",
+      tw_username: "",
+      yt_username: "",
+      userImage: "",
+      payoutoption: "",
+      paypal_email: "",
+      bank_acct_number: "",
+      bank_routing_number: "",
+      bank_address: "",
+      bank_swift_code: "",
+      refcode: "",
+    };
+
+    HttpService.createUser(data, (status, res) => {
+      console.log("res", res);
+      state.setLoading(false);
+      if (status && res.status) {
+        // successSnack(res.message);
+        // navigation.navigate(VERIFY_EMAIL, {email: email, plan: plan});
+      } else {
+        // errorSnack(res.message)
+      }
+    });
+  };
   return (
     <AppContainer
       state={state}
       background={images.bg_small_squares}
       children={
         <ScrollView>
-          <View style={[AppStyles.columnContainer,{backgroundColor:'transparent'}]}>
-            <BackToolbar navigation={navigation}/>
+          <View style={[AppStyles.columnContainer, { backgroundColor: "transparent" }]}>
+            <BackToolbar navigation={navigation} />
 
-            <Text style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Personal" +
-            "Details"}</Text>
+            <Text
+              style={[Typography.Normal, { marginStart: 13, marginTop: 10, fontSize: 22 }]}>{"Personal\nDetails"}</Text>
 
             <TouchableOpacity activeOpacity={.7} style={{ width: 100, alignSelf: "center" }}>
               <View style={[AppStyles.centerItems, {
@@ -99,11 +150,11 @@ const PersonalDetails = ({navigation}) => {
             </View>
 
             <View style={{ flexDirection: "row", alignSelf: "center" }}>
-              <View style={[AppStyles.inputContainerStyle, { width: "20%" }]}>
+              <View style={[AppStyles.inputContainerStyle, { width: "30%" }]}>
                 <Picker
                   selectedValue={countryCode}
-                  style={{ width: "90%" }}
-                  mode={"dropdown"}
+                  style={[Typography.SmallMedium,{ width: "90%", color: "white" }]}
+                  mode={"dialog"}
                   onValueChange={(itemValue, itemIndex) => setCountryCode(itemValue)}
                 >
                   <Picker.Item label="+92" value="+92" />
@@ -113,7 +164,7 @@ const PersonalDetails = ({navigation}) => {
 
               <View style={[{ width: "5%" }]} />
 
-              <View style={[AppStyles.inputContainerStyle, { width: "65%", paddingEnd: 10 }]}>
+              <View style={[AppStyles.inputContainerStyle, { width: "55%", paddingEnd: 10 }]}>
 
                 <TextInput
                   style={[ChakraTypography.MediumRegular, AppStyles.inputStyle]}
@@ -145,11 +196,11 @@ const PersonalDetails = ({navigation}) => {
                        style={{ width: 15, height: 15, resizeMode: "contain", alignSelf: "center" }} />
                 <TextInput
                   style={[ChakraTypography.MediumRegular, AppStyles.inputStyle]}
-                  onChangeText={text => setPhone(text)}
-                  value={phone}
+                  value={locationData.city}
                   placeholderTextColor={"#97A1E5"}
                   returnKeyType="next"
                   placeholder="City"
+                  editable={false}
                 />
 
               </View>
@@ -161,11 +212,11 @@ const PersonalDetails = ({navigation}) => {
                        style={{ width: 15, height: 15, resizeMode: "contain", alignSelf: "center" }} />
                 <TextInput
                   style={[ChakraTypography.MediumRegular, AppStyles.inputStyle]}
-                  onChangeText={text => setPhone(text)}
-                  value={phone}
+                  value={locationData.state}
                   placeholderTextColor={"#97A1E5"}
                   returnKeyType="next"
                   placeholder="State"
+                  editable={false}
                 />
 
               </View>
@@ -179,11 +230,11 @@ const PersonalDetails = ({navigation}) => {
                        style={{ width: 15, height: 15, resizeMode: "contain", alignSelf: "center" }} />
                 <TextInput
                   style={[ChakraTypography.MediumRegular, AppStyles.inputStyle]}
-                  onChangeText={text => setPhone(text)}
-                  value={phone}
+                  value={locationData.country}
                   placeholderTextColor={"#97A1E5"}
                   returnKeyType="next"
                   placeholder="Country"
+                  editable={false}
                 />
 
               </View>
@@ -195,11 +246,11 @@ const PersonalDetails = ({navigation}) => {
                        style={{ width: 15, height: 15, resizeMode: "contain", alignSelf: "center" }} />
                 <TextInput
                   style={[ChakraTypography.MediumRegular, AppStyles.inputStyle]}
-                  onChangeText={text => setPhone(text)}
-                  value={phone}
+                  value={locationData.zip_code}
                   placeholderTextColor={"#97A1E5"}
                   returnKeyType="done"
                   placeholder="Zip Code"
+                  editable={false}
                 />
 
               </View>
@@ -208,7 +259,8 @@ const PersonalDetails = ({navigation}) => {
             <GradiantButton
               label="Next"
               onPress={() => {
-                navigation.navigate(PERSONAL_DETAILS_VIEW)
+                onCreateUser()
+                // navigation.navigate(PERSONAL_DETAILS_VIEW);
               }}
               styles={{ marginTop: 15, marginBottom: 15 }}
               backgroundColor={gradiant_colors.pinkGradiant}
