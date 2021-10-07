@@ -25,6 +25,7 @@ const colors = {
   green: "#0CFC6C",
   white_60: "rgba(255, 255, 255, 0.6)",
   white_80: "rgba(255, 255, 255, 0.8)",
+  orange: "#FF740F",
   // your colors
 };
 

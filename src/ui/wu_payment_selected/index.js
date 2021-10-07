@@ -1,5 +1,5 @@
-import React from "react";
-import { Alert, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { Image, Modal, Text, TouchableOpacity, View } from "react-native";
 import AppContainer from "../../core/AppContainer";
 import { AppStyles } from "../../theme/styles";
 import UserContext from "../../AuthContaxt";
@@ -10,11 +10,12 @@ import { ChakraTypography } from "../../theme/ChakraTypography";
 import colors from "../../theme/colors";
 import { GradiantCircle } from "../../core/GradiantCircle";
 import { images } from "../../assets";
+import { GradiantButton } from "../../core/GradiantButton";
 import { CHECKIN_FIRST } from "../../constants/ScreenNames";
 
 const WUPaymentSelected = ({ navigation }) => {
   const state = React.useContext(UserContext);
-
+  const [paymentSuccess, PaymentSuccess] = useState(false);
   const PaymentItem = ({ selected, gradiantColor, title, subTitle, iconSrc, onPress }) => {
     return <TouchableOpacity disabled={!selected} onPress={onPress} style={{
       backgroundColor: selected ? colors.primaryColor : "transparent",
@@ -39,7 +40,7 @@ const WUPaymentSelected = ({ navigation }) => {
       background={images.bg_small_squares}
       children={
         <View style={[AppStyles.columnContainer, { height: "100%", backgroundColor: "transparent" }]}>
-        <BackToolbar navigation={navigation} />
+          <BackToolbar navigation={navigation} />
 
           <Text style={[Typography.Normal, { marginStart: 15, fontSize: 22, marginTop: 10 }]}>{"Payout\n" +
           "Setting"}</Text>
@@ -56,17 +57,46 @@ const WUPaymentSelected = ({ navigation }) => {
                          gradiantColor={gradiant_colors.blueGradiant} title={"PayPal"}
                          subTitle={"Receive money through paypal"} iconSrc={images.paypal} />
             <PaymentItem onPress={() => {
-              Alert.alert(
-                "Kabulay",
-                "Payment Method Added Successfully",
-                [
-                  { text: "OK", onPress: () => navigation.navigate(CHECKIN_FIRST) },
-                ],
-              );
+              PaymentSuccess(true);
             }}
                          selected={true}
                          gradiantColor={gradiant_colors.yellowGradiant} title={"Western Union"}
                          subTitle={"Receive money through wire transfer"} iconSrc={images.bank} />
+
+            <Modal animationType="slide"
+                   transparent={true}
+                   visible={paymentSuccess}
+                   onRequestClose={() => {
+                     PaymentSuccess(false);
+                   }}>
+              <View style={{flex:1,backgroundColor:'transparent',justifyContent:'center'}}>
+
+                <View style={{
+                  alignSelf: "center",
+                  backgroundColor: colors.primaryColor,
+                  padding: 20,
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  margin: 20,
+                  borderRadius: 20,
+                }}>
+                  <Image source={images.check_icon} style={{ width: 65, height: 65 ,margin:20}} />
+                  <Text style={[ChakraTypography.Normal, {  margin:20, textAlign:'center'}]}>{"Payment Method Added Successfully"}</Text>
+                  <GradiantButton
+                    radius={30}
+                    label="Ok"
+                    onPress={() => {
+                      PaymentSuccess(false);
+                      navigation.navigate(CHECKIN_FIRST);
+                    }}
+                    styles={{ width: 50, borderRadius: 50 ,margin:20}}
+                    backgroundColor={gradiant_colors.pinkGradiant}
+                  />
+                </View>
+              </View>
+
+            </Modal>
 
           </View>
         </View>

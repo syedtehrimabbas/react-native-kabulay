@@ -4,10 +4,10 @@ import colors from "../theme/colors";
 import LinearGradient from "react-native-linear-gradient";
 import { ChakraTypography } from "../theme/ChakraTypography";
 
-export const GradiantButton = ({ label, onPress, backgroundColor, styles, iconSrc }) => {
+export const GradiantButton = ({ label, onPress, backgroundColor, styles, iconSrc, radius }) => {
   return <TouchableOpacity onPress={onPress}
                            style={[{
-                             borderRadius: 8,
+                             borderRadius: radius !== undefined ? radius : 8,
                              width: "90%",
                              backgroundColor: "red",
                              alignSelf: "center",
@@ -18,7 +18,7 @@ export const GradiantButton = ({ label, onPress, backgroundColor, styles, iconSr
     <LinearGradient
       colors={backgroundColor}
       style={[{
-        borderRadius: 8,
+        borderRadius: radius !== undefined ? radius : 8,
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
@@ -27,7 +27,7 @@ export const GradiantButton = ({ label, onPress, backgroundColor, styles, iconSr
       }]}
 
     >
-      <View style={{ flexDirection: "row" ,alignItems:'center'}}>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
         <Text style={[ChakraTypography.MediumRegular, {
           color: colors.white,
         }]}>{label}</Text>
@@ -35,7 +35,7 @@ export const GradiantButton = ({ label, onPress, backgroundColor, styles, iconSr
         {iconSrc !== undefined ? <Image source={iconSrc} style={{
           width: 15,
           height: 15,
-          marginStart:10,
+          marginStart: 10,
           resizeMode: "contain",
           tintColor: "white",
         }} /> : null}

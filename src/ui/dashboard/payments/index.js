@@ -9,7 +9,7 @@ import { images } from "../../../assets";
 import { ChakraTypography } from "../../../theme/ChakraTypography";
 import { GradiantOval } from "../../../core/GradiantOval";
 import gradiant_colors from "../../../theme/gradiant_colors";
-import { TASK_DETAILS, WITHDRAW } from "../../../constants/ScreenNames";
+import { WITHDRAW } from "../../../constants/ScreenNames";
 
 const Payments = ({ navigation }) => {
   const state = React.useContext(UserContext);
@@ -19,6 +19,11 @@ const Payments = ({ navigation }) => {
     return () => {
     };
   }, []);
+
+  const borderColors = [colors.pinkLight, colors.green, colors.orange, colors.blueColor];
+  const getRandomColor = (position) => {
+    return borderColors[position % borderColors.length];
+  };
 
   const onTabSelect = (tabName) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
@@ -40,9 +45,9 @@ const Payments = ({ navigation }) => {
       state={state}
       background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer, { backgroundColor:'transparent',padding: hp(2) }]}>
+        <View style={[AppStyles.columnContainer, { backgroundColor: "transparent", padding: hp(2) }]}>
 
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
             <View style={{ flexDirection: "column" }}>
 
               <Text style={[ChakraTypography.SmallRegular, { marginTop: 10 }]}>{"AVAILABLE BALANCE"}</Text>
@@ -109,11 +114,11 @@ const Payments = ({ navigation }) => {
           </View>
           <FlatList
             data={[0, 0, 0, 0, 0, 0, 0, 0]}
-            renderItem={({ item }) => <TouchableOpacity activeOpacity={.7}>
+            renderItem={({ index,item }) => <TouchableOpacity activeOpacity={.7}>
               <View style={{
                 borderRadius: 20,
                 borderWidth: 2,
-                borderColor: colors.pinkLight,
+                borderColor: getRandomColor(index),
                 marginTop: 10,
                 padding: 10,
                 flexDirection: "row",

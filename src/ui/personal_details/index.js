@@ -259,8 +259,8 @@ const PersonalDetails = ({ navigation }) => {
             <GradiantButton
               label="Next"
               onPress={() => {
-                onCreateUser()
-                // navigation.navigate(PERSONAL_DETAILS_VIEW);
+                // onCreateUser()
+                navigation.navigate(PERSONAL_DETAILS_VIEW);
               }}
               styles={{ marginTop: 15, marginBottom: 15 }}
               backgroundColor={gradiant_colors.pinkGradiant}

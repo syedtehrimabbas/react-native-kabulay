@@ -39,4 +39,5 @@ export const images = {
   bg_small_squares: require("./images/backgrounds/bg_small_squares.jpeg"),
   bg_stars: require("./images/backgrounds/bg_stars.jpeg"),
   bg_shapes: require("./images/backgrounds/bg_shapes.jpeg"),
+  check_icon: require("./images/ic_checked.png"),
 };
