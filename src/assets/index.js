@@ -40,4 +40,8 @@ export const images = {
   bg_stars: require("./images/backgrounds/bg_stars.jpeg"),
   bg_shapes: require("./images/backgrounds/bg_shapes.jpeg"),
   check_icon: require("./images/ic_checked.png"),
+  icon_email: require("./icons/icon_email.png"),
+  icon_badge: require("./icons/icon_badge.png"),
+  icon_refer: require("./icons/icon_refer.png"),
+  icon_logout: require("./icons/icon_logout.png"),
 };
