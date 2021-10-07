@@ -8,9 +8,7 @@
 
 import React from "react";
 import "react-native-gesture-handler";
-import { Image, LogBox, Platform, UIManager, useColorScheme ,Animated} from "react-native";
-
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { Image, LogBox, Platform, Text, UIManager, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
@@ -29,9 +27,12 @@ import {
   PROFILE,
   SELECT_LANGUAGE,
   SETUP_PAYPAL,
-  SETUP_WUNION, TASK_DETAILS, TASK_DETAILS_START,
+  SETUP_WUNION,
+  TASK_DETAILS,
+  TASK_DETAILS_START,
   TASKS,
-  WELCOME, WITHDRAW,
+  WELCOME,
+  WITHDRAW,
   WU_PAYMENT_SELECTED,
 } from "./src/constants/ScreenNames";
 import SelectLanguage from "./src/ui/select_language";
@@ -60,30 +61,48 @@ import Profile from "./src/ui/dashboard/profile";
 import TaskDetails from "./src/ui/dashboard/tasks/task_details";
 import TaskDetailsStart from "./src/ui/dashboard/tasks/task_details_start";
 import Withdraw from "./src/ui/dashboard/payments/withdraw";
+import { Typography } from "./src/theme/Typography";
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const TabIcon = ({ focused, color, title, icon }) => {
+  return <View style={{ flexDirection: "column", alignItems: "center" }}>
+    <View style={{
+      backgroundColor: focused ? colors.blueColorLight : "transparent",
+      padding: focused ? 10 : 10,
+      borderRadius: 15,
+    }}>
+      <Image source={icon}
+             style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+    </View>
+    <Text
+      style={[Typography.SmallRegular, { color: color }]}>{title}</Text>
+  </View>;
+};
 const Dashboard = () => {
   return (
     <Tab.Navigator
-
       shifting={true}
       backBehavior="none"
-
-      activeColor={colors.iconsColor}
-      inactiveColor={colors.iconsColor}
+      activeColor={colors.white}
+      inactiveColor={"#A2AADA"}
       tabBarOptions={{
-        showLabel: true,
-        activeTintColor: colors.primaryColor,
+        showLabel: false,
+        activeTintColor: colors.white,
+        style: {
+          borderTopWidth: 0,
+          backgroundColor: colors.blueLight,
+          height: 70,
+        },
       }}
+      style={{ backgroundColor: "red" }}
     >
       <Tab.Screen
         name={TASKS}
         component={Tasks}
         options={{
-          tabBarIcon: ({ color }) => (
-            <Image source={images.nav_tasks}
-                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          tabBarIcon: ({ focused, color }) => (
+            <TabIcon color={color} title={"Tasks"} focused={focused} icon={images.nav_tasks} />
           ),
         }}
       />
@@ -92,9 +111,8 @@ const Dashboard = () => {
         name={PAYMENTS}
         component={Payments}
         options={{
-          tabBarIcon: ({ color }) => (
-            <Image source={images.nav_payments}
-                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          tabBarIcon: ({ focused, color }) => (
+            <TabIcon color={color} title={"Payments"} focused={focused} icon={images.nav_payments} />
           ),
         }}
       />
@@ -103,9 +121,8 @@ const Dashboard = () => {
         name={NOTIFICATIONS}
         component={Notifications}
         options={{
-          tabBarIcon: ({ color }) => (
-            <Image source={images.nav_notifications}
-                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          tabBarIcon: ({ focused, color }) => (
+            <TabIcon color={color} title={"Notification"} focused={focused} icon={images.nav_notifications} />
           ),
         }}
       />
@@ -114,9 +131,8 @@ const Dashboard = () => {
         name={PROFILE}
         component={Profile}
         options={{
-          tabBarIcon: ({ color }) => (
-            <Image source={images.nav_profile}
-                   style={{ width: 22, height: 18, resizeMode: "contain", tintColor: color }} />
+          tabBarIcon: ({ focused, color }) => (
+            <TabIcon color={color} title={"Profile"} focused={focused} icon={images.nav_profile} />
           ),
         }}
       />
@@ -126,12 +142,6 @@ const Dashboard = () => {
 };
 
 export default function App() {
-  const isDarkMode = useColorScheme() === "dark";
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   /*App states*/
   const [isSplash, setSplash] = React.useState(true);
   const [user, setUser] = React.useState({});
@@ -160,19 +170,8 @@ export default function App() {
     }, 3000);
   }, []);
 
-  const config = {
-    animation: 'spring',
-    config: {
-      stiffness: 1000,
-      damping: 500,
-      mass: 3,
-      overshootClamping: true,
-      restDisplacementThreshold: 0.01,
-      restSpeedThreshold: 0.01,
-    },
-  };
   const navigatorOptions = {
-    cardStyle: { backgroundColor: 'transparent' },
+    cardStyle: { backgroundColor: "transparent" },
     gestureEnabled: true,
     cardStyleInterpolator: ({ current: { progress } }) => ({
       cardStyle: {
@@ -185,17 +184,17 @@ export default function App() {
         opacity: progress.interpolate({
           inputRange: [0, 1],
           outputRange: [0, 0.5],
-          extrapolate: 'clamp',
+          extrapolate: "clamp",
         }),
       },
     }),
-  }
+  };
   if (isSplash) {
     return <Splash />;
   } else {
     return (
       <UserProvider value={state}>
-        <NavigationContainer >
+        <NavigationContainer>
           <RootStack.Navigator headerMode="none" initialRouteName={SELECT_LANGUAGE}
                                backBehavior="none"
                                screenOptions={navigatorOptions}

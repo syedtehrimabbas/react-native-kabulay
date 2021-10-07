@@ -22,6 +22,7 @@ const colors = {
   lightDark: "#838590",
   lightBlueDark: "#9AA1C4",
   blueColor: "#23F3D3",
+  blueColorLight: "#13B7CD",
   green: "#0CFC6C",
   white_60: "rgba(255, 255, 255, 0.6)",
   white_80: "rgba(255, 255, 255, 0.8)",
