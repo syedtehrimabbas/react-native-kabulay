@@ -8,7 +8,7 @@
 
 import React from "react";
 import "react-native-gesture-handler";
-import { Image, LogBox, Platform, UIManager, useColorScheme } from "react-native";
+import { Image, LogBox, Platform, UIManager, useColorScheme ,Animated} from "react-native";
 
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -160,14 +160,46 @@ export default function App() {
     }, 3000);
   }, []);
 
+  const config = {
+    animation: 'spring',
+    config: {
+      stiffness: 1000,
+      damping: 500,
+      mass: 3,
+      overshootClamping: true,
+      restDisplacementThreshold: 0.01,
+      restSpeedThreshold: 0.01,
+    },
+  };
+  const navigatorOptions = {
+    cardStyle: { backgroundColor: 'transparent' },
+    gestureEnabled: true,
+    cardStyleInterpolator: ({ current: { progress } }) => ({
+      cardStyle: {
+        opacity: progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 1],
+        }),
+      },
+      overlayStyle: {
+        opacity: progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 0.5],
+          extrapolate: 'clamp',
+        }),
+      },
+    }),
+  }
   if (isSplash) {
     return <Splash />;
   } else {
     return (
       <UserProvider value={state}>
-        <NavigationContainer>
+        <NavigationContainer >
           <RootStack.Navigator headerMode="none" initialRouteName={SELECT_LANGUAGE}
-                               backBehavior="none">
+                               backBehavior="none"
+                               screenOptions={navigatorOptions}
+                               mode="modal">
             <RootStack.Screen name={SELECT_LANGUAGE} component={SelectLanguage} />
             <RootStack.Screen name={WELCOME} component={Welcome} />
             <RootStack.Screen name={PERSONAL_DETAILS} component={PersonalDetails} />
