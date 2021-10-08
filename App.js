@@ -14,6 +14,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import {
   BANK_ACCOUNT_ENTRY,
   CHECKIN_FIRST,
+  CONTACT_US,
   DASHBOARD,
   FOLLOW_KABULAY,
   NOTIFICATIONS,
@@ -62,6 +63,7 @@ import TaskDetails from "./src/ui/dashboard/tasks/task_details";
 import TaskDetailsStart from "./src/ui/dashboard/tasks/task_details_start";
 import Withdraw from "./src/ui/dashboard/payments/withdraw";
 import { Typography } from "./src/theme/Typography";
+import ContactUs from "./src/ui/dashboard/profile/contact";
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -79,6 +81,7 @@ const TabIcon = ({ focused, color, title, icon }) => {
       style={[Typography.SmallRegular, { color: color }]}>{title}</Text>
   </View>;
 };
+
 const Dashboard = () => {
   return (
     <Tab.Navigator
@@ -217,6 +220,7 @@ export default function App() {
             <RootStack.Screen name={TASK_DETAILS} component={TaskDetails} />
             <RootStack.Screen name={TASK_DETAILS_START} component={TaskDetailsStart} />
             <RootStack.Screen name={WITHDRAW} component={Withdraw} />
+            <RootStack.Screen name={CONTACT_US} component={ContactUs} />
           </RootStack.Navigator>
         </NavigationContainer>
       </UserProvider>

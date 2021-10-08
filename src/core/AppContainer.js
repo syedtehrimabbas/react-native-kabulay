@@ -4,14 +4,14 @@ import Loader from "./Loader";
 import { AppStyles } from "../theme/styles";
 import colors from "../theme/colors";
 
-const AppContainer = ({ children, state, background }) => {
+const AppContainer = ({ children, state, background, imageStyle }) => {
   return <View
     style={AppStyles.columnContainer}>
     <SafeAreaView />
     <StatusBar hidden={false} showHideTransition={true} backgroundColor={colors.primaryDarkColor} />
     <Loader loading={state.loading} />
     {background !== undefined ?
-      <ImageBackground source={background} style={{ width: "100%", height: "100%" }}>
+      <ImageBackground source={background} style={{ width: "100%", height: "100%" }} imageStyle={imageStyle}>
         {children}
       </ImageBackground> : children}
   </View>;

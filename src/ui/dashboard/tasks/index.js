@@ -116,7 +116,7 @@ const Tasks = ({ navigation }) => {
                                                           onPress={() => navigation.navigate(TASK_DETAILS)}>
                 <View style={{
                   borderRadius: 20,
-                  borderWidth: 2,
+                  borderWidth: 3,
                   borderColor: getRandomColor(index),
                   marginTop: 10,
                   padding: 10,

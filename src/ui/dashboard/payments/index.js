@@ -117,7 +117,7 @@ const Payments = ({ navigation }) => {
             renderItem={({ index,item }) => <TouchableOpacity activeOpacity={.7}>
               <View style={{
                 borderRadius: 20,
-                borderWidth: 2,
+                borderWidth: 3,
                 borderColor: getRandomColor(index),
                 marginTop: 10,
                 padding: 10,

@@ -5,7 +5,7 @@ import { ChakraTypography } from "../theme/ChakraTypography";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const BackToolbar = ({navigation}) => {
-  return <View style={{ flexDirection: "row", marginTop: 20 }}>
+  return <View style={{ flexDirection: "row", marginTop: 30 }}>
     <TouchableOpacity onPress={()=>navigation.pop()}>
       <Image source={images.back} style={{ width: 25, height: 25, resizeMode: "contain" }} />
     </TouchableOpacity>

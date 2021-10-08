@@ -1,13 +1,14 @@
 import { Platform, StyleSheet } from "react-native";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import colors from "./colors";
+import { ChakraTypography } from "./ChakraTypography";
 
 export const AppStyles = StyleSheet.create({
   columnContainer: {
     flex: 1,
     flexDirection: "column",
     backgroundColor: colors.primaryDarkColor,
-    height:'100%'
+    height: "100%",
     // paddingLeft: 5,
     // paddingRight: 5
   },
@@ -103,14 +104,15 @@ export const AppStyles = StyleSheet.create({
     flexDirection: "row",
     width: "90%",
     height: 45,
-    marginTop:10,
+    marginTop: 10,
     borderRadius: 8,
     backgroundColor: colors.blueLight,
     alignItems: "center",
     paddingStart: 10,
   },
 
-  inputStyle: { width: "90%",
+  inputStyle: {
+    width: "90%",
   },
   profileTextStyle: {
     alignSelf: "center",
@@ -143,5 +145,11 @@ export const AppStyles = StyleSheet.create({
     paddingLeft: 10,
     marginBottom: 10,
     width: "90%",
+  },
+  contactInputStyle: {
+    width:'100%',
+    color: colors.white,
+    fontSize: 14,
+    opacity:0.6
   },
 });

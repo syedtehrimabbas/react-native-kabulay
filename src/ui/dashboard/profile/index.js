@@ -11,6 +11,7 @@ import { ChakraTypography } from "../../../theme/ChakraTypography";
 import { GradiantCircle } from "../../../core/GradiantCircle";
 import gradiant_colors from "../../../theme/gradiant_colors";
 import LinearGradient from "react-native-linear-gradient";
+import { CONTACT_US } from "../../../constants/ScreenNames";
 
 const Profile = ({ navigation }) => {
   const state = React.useContext(UserContext);
@@ -39,6 +40,14 @@ const Profile = ({ navigation }) => {
           style={[ChakraTypography.SmallMedium, { fontSize: 12, color: colors.lightBlueDark }]}>{subTitle}</Text>
       </View>
     </View>;
+  };
+
+  const onItemClick = (item) => {
+    switch (item.id) {
+      case 1:
+        navigation.navigate(CONTACT_US);
+        break;
+    }
   };
   return (
     <AppContainer
@@ -100,8 +109,8 @@ const Profile = ({ navigation }) => {
             </View>
 
           </View>
-          <ScrollView  showsVerticalScrollIndicator={false}
-                       style={{ marginTop: 30 }}>
+          <ScrollView showsVerticalScrollIndicator={false}
+                      style={{ marginTop: 30 }}>
             <View style={{ flexDirection: "column" }}>
               <View style={{ flexDirection: "row", justifyContent: "space-between", paddingEnd: 20, marginTop: 10 }}>
                 <ProfileItemView gradiantColor={gradiant_colors.greenGradiant} title={"Name"} subTitle={name} />
@@ -150,23 +159,24 @@ const Profile = ({ navigation }) => {
                 <FlatList
                   showsVerticalScrollIndicator={false}
                   data={[
-                    {label:"Contact Us",icon:images.icon_email},
-                    {label:"Badge ID",icon:images.icon_badge},
-                    {label:"Referrals",icon:images.icon_refer},
-                    {label:"Sign out",icon:images.icon_logout}]}
-                  renderItem={({ item }) => <TouchableOpacity activeOpacity={.7}>
+                    { id: 1, label: "Contact Us", icon: images.icon_email },
+                    { id: 2, label: "Badge ID", icon: images.icon_badge },
+                    { id: 3, label: "Referrals", icon: images.icon_refer },
+                    { id: 4, label: "Sign out", icon: images.icon_logout }]}
+                  renderItem={({ item }) => <TouchableOpacity activeOpacity={.7} onPress={() => onItemClick(item)}>
                     <View style={{
                       borderRadius: 15,
                       margin: 10,
                       backgroundColor: colors.primaryDarkColor,
                       padding: 10,
-                      paddingStart:30,
+                      paddingStart: 30,
                       flexDirection: "row",
                     }}>
                       <View style={{ flexDirection: "column", flex: 1 }}>
-                        <View style={{ flexDirection: "row",alignItems:'center' }}>
-                          <Image source={item.icon} style={{width:30,height:40,resizeMode:'contain',marginEnd:10,}}/>
-                          <Text style={[ChakraTypography.MediumBold,{color: colors.grey2}]}>{item.label}</Text>
+                        <View style={{ flexDirection: "row", alignItems: "center" }}>
+                          <Image source={item.icon}
+                                 style={{ width: 30, height: 40, resizeMode: "contain", marginEnd: 10 }} />
+                          <Text style={[ChakraTypography.MediumBold, { color: colors.grey2 }]}>{item.label}</Text>
                         </View>
                       </View>
 
