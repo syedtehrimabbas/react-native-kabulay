@@ -12,6 +12,7 @@ import { Image, LogBox, Platform, Text, UIManager, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
+  BADGE_ID,
   BANK_ACCOUNT_ENTRY,
   CHECKIN_FIRST,
   CONTACT_US,
@@ -64,6 +65,7 @@ import TaskDetailsStart from "./src/ui/dashboard/tasks/task_details_start";
 import Withdraw from "./src/ui/dashboard/payments/withdraw";
 import { Typography } from "./src/theme/Typography";
 import ContactUs from "./src/ui/dashboard/profile/contact";
+import BadgeId from "./src/ui/dashboard/profile/profile_badge";
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -221,6 +223,7 @@ export default function App() {
             <RootStack.Screen name={TASK_DETAILS_START} component={TaskDetailsStart} />
             <RootStack.Screen name={WITHDRAW} component={Withdraw} />
             <RootStack.Screen name={CONTACT_US} component={ContactUs} />
+            <RootStack.Screen name={BADGE_ID} component={BadgeId} />
           </RootStack.Navigator>
         </NavigationContainer>
       </UserProvider>

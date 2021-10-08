@@ -44,4 +44,5 @@ export const images = {
   icon_badge: require("./icons/icon_badge.png"),
   icon_refer: require("./icons/icon_refer.png"),
   icon_logout: require("./icons/icon_logout.png"),
+  qr_code: require("./images/qr_code.png"),
 };

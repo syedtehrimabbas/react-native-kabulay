@@ -20,6 +20,7 @@ export const PAYMENTS = "Payments";
 export const NOTIFICATIONS = "Notifications";
 export const PROFILE = "Profile";
 export const CONTACT_US = "ContactUs";
+export const BADGE_ID = "BadgeId";
 
 export const TASK_DETAILS = "TaskDetails";
 export const TASK_DETAILS_START = "TaskDetailsStart";
