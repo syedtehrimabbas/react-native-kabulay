@@ -11,7 +11,7 @@ import { ChakraTypography } from "../../../theme/ChakraTypography";
 import { GradiantCircle } from "../../../core/GradiantCircle";
 import gradiant_colors from "../../../theme/gradiant_colors";
 import LinearGradient from "react-native-linear-gradient";
-import { BADGE_ID, CONTACT_US } from "../../../constants/ScreenNames";
+import { BADGE_ID, CONTACT_US, REFERRAL_SCREEN } from "../../../constants/ScreenNames";
 
 const Profile = ({ navigation }) => {
   const state = React.useContext(UserContext);
@@ -50,6 +50,9 @@ const Profile = ({ navigation }) => {
         break;
       case 2:
         destination = BADGE_ID;
+        break;
+      case 3:
+        destination = REFERRAL_SCREEN;
         break;
     }
     navigation.navigate(destination);

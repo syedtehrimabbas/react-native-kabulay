@@ -45,4 +45,11 @@ export const images = {
   icon_refer: require("./icons/icon_refer.png"),
   icon_logout: require("./icons/icon_logout.png"),
   qr_code: require("./images/qr_code.png"),
+  socialIcon: {
+    email: require("./social_icons/email.png"),
+    facebook: require("./social_icons/facebook.png"),
+    instagram: require("./social_icons/instagram.png"),
+    twitter: require("./social_icons/twitter.png"),
+    whatsapp: require("./social_icons/whatsapp.png"),
+  },
 };

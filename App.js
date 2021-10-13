@@ -26,7 +26,7 @@ import {
   PAYPAL_PAYMENT_SELECTED,
   PERSONAL_DETAILS,
   PERSONAL_DETAILS_VIEW,
-  PROFILE,
+  PROFILE, REFERRAL_SCREEN, REFERRAL_STATUS,
   SELECT_LANGUAGE,
   SETUP_PAYPAL,
   SETUP_WUNION,
@@ -66,6 +66,8 @@ import Withdraw from "./src/ui/dashboard/payments/withdraw";
 import { Typography } from "./src/theme/Typography";
 import ContactUs from "./src/ui/dashboard/profile/contact";
 import BadgeId from "./src/ui/dashboard/profile/profile_badge";
+import ReferralScreen from "./src/ui/dashboard/profile/referral";
+import ReferralStatus from "./src/ui/dashboard/profile/referral/referall_status";
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -224,6 +226,8 @@ export default function App() {
             <RootStack.Screen name={WITHDRAW} component={Withdraw} />
             <RootStack.Screen name={CONTACT_US} component={ContactUs} />
             <RootStack.Screen name={BADGE_ID} component={BadgeId} />
+            <RootStack.Screen name={REFERRAL_SCREEN} component={ReferralScreen} />
+            <RootStack.Screen name={REFERRAL_STATUS} component={ReferralStatus} />
           </RootStack.Navigator>
         </NavigationContainer>
       </UserProvider>

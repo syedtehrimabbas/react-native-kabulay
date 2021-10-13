@@ -77,7 +77,6 @@ const ContactUs = ({ navigation }) => {
                 PaymentSuccess(true);
               }} styles={{ marginTop: 30, width: "100%" }} />
 
-
             </View>
           </ScrollView>
           <AppDialog
