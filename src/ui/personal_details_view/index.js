@@ -27,7 +27,7 @@ const PersonalDetailsView = ({ navigation }) => {
   const [zipCode, setZipCode] = useState("100001");
 
   const ProfileItemView = ({ gradiantColor, title, subTitle }) => {
-    return <View style={{ flexDirection: "row" }}>
+    return <View style={{ flexDirection: "row" ,flex:1}}>
       <GradiantCircle size={20} colors={gradiantColor} />
       <View>
         <Text style={[ChakraTypography.Normal, { marginTop: 5 }]}>{title}</Text>
@@ -115,7 +115,7 @@ const PersonalDetailsView = ({ navigation }) => {
               <ProfileItemView gradiantColor={gradiant_colors.yellowGradiant} title={"Country"} subTitle={country} />
 
               <View style={[{ width: "4%" }]} />
-              <ProfileItemView gradiantColor={gradiant_colors.greenGradiant} title={"Zip Code"} subTitle={zipCode} />
+              <ProfileItemView gradiantColor={gradiant_colors.greenGradiant} title={"Zip Code"} subTitle={country} />
 
             </View>
 

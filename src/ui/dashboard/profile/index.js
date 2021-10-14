@@ -161,6 +161,7 @@ const Profile = ({ navigation }) => {
                   borderRadius: 15,
                   width: "100%",
                   justifyContent: "center",
+                  paddingBottom:5
                 }]}
 
               >
@@ -174,7 +175,8 @@ const Profile = ({ navigation }) => {
                   renderItem={({ item }) => <TouchableOpacity activeOpacity={.7} onPress={() => onItemClick(item)}>
                     <View style={{
                       borderRadius: 15,
-                      margin: 10,
+                      margin: 5,
+                      marginBottom:0,
                       backgroundColor: colors.primaryDarkColor,
                       padding: 10,
                       paddingStart: 30,

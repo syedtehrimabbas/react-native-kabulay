@@ -202,7 +202,7 @@ export default function App() {
     return (
       <UserProvider value={state}>
         <NavigationContainer>
-          <RootStack.Navigator headerMode="none" initialRouteName={DASHBOARD}
+          <RootStack.Navigator headerMode="none" initialRouteName={SELECT_LANGUAGE}
                                backBehavior="none"
                                screenOptions={navigatorOptions}
                                mode="modal">

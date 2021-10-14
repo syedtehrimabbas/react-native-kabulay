@@ -1,7 +1,6 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, LayoutAnimation, StyleSheet, Text, TextInput, View } from "react-native";
 import Swiper from "react-native-swiper";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 import AppContainer from "../../core/AppContainer";
 import { AppStyles } from "../../theme/styles";
@@ -10,13 +9,16 @@ import { images } from "../../assets";
 import gradiant_colors from "../../theme/gradiant_colors";
 import { GradiantButton } from "../../core/GradiantButton";
 import { Footer } from "../../core/Footer";
-import colors from "../../theme/colors";
+import CheckBox from "@react-native-community/checkbox";
 import { ChakraTypography } from "../../theme/ChakraTypography";
 import { Typography } from "../../theme/Typography";
 import { PERSONAL_DETAILS } from "../../constants/ScreenNames";
+import colors from "../../theme/colors";
 
 const Welcome = ({ navigation }) => {
   const state = React.useContext(UserContext);
+  const [haveReferral, HaveReferral] = React.useState(false);
+  const [referralCode, ReferralCode] = React.useState("");
   const SliderComponent = () => {
     return <View style={styles.slide1}>
       <Image
@@ -29,17 +31,24 @@ const Welcome = ({ navigation }) => {
     </View>;
   };
 
+  const changeReferral = (newValue) => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
+    HaveReferral(newValue);
+  };
+
   return (
     <AppContainer
       state={state}
       background={images.bg_small_squares}
       children={
-        <View style={[AppStyles.columnContainer,{backgroundColor:'transparent'}]}>
-          <Image
-            source={images.logo}
-            style={{ width: 144, height: 151, alignSelf: "center" }} />
-          <View style={{ position: "absolute", bottom: 30, width: "100%" }}
-          >
+        <View style={[AppStyles.columnContainer, { backgroundColor: "transparent" }]}>
+
+          <View style={{ position: "absolute", bottom: 30, width: "100%" }}>
+
+            <Image
+              source={images.logo}
+              style={{ width: 144, height: 151, alignSelf: "center" }} />
+
             <Swiper
               showsButtons={false}
               style={styles.wrapper}
@@ -51,17 +60,26 @@ const Welcome = ({ navigation }) => {
             </Swiper>
 
             <View style={{ flexDirection: "row", alignSelf: "center", marginBottom: 5 }}>
-              <TouchableOpacity style={{
-                width: 20,
-                height: 20,
-                borderColor: colors.borderColor,
-                borderWidth: 2,
-                borderRadius: 5,
-                alignSelf: "center",
-                margin: 5,
-              }} />
+              <CheckBox
+                disabled={false}
+                value={haveReferral}
+                onValueChange={(newValue) => changeReferral(newValue)}
+                tintColors={{ true: colors.borderColor, false: colors.borderColor }}
+              />
+
               <Text style={[ChakraTypography.Normal, { alignSelf: "center" }]}>{"I have referral code"}</Text>
             </View>
+
+            {haveReferral ? <View style={[AppStyles.inputContainerStyle, { marginTop: 20, marginBottom: 10 }]}>
+              <TextInput
+                style={[ChakraTypography.MediumRegular, AppStyles.inputStyle]}
+                onChangeText={text => ReferralCode(text)}
+                value={referralCode}
+                placeholderTextColor={"#97A1E5"}
+                returnKeyType="done"
+                placeholder="Enter Referral Code"
+              />
+            </View> : null}
 
             <GradiantButton
               label="LOGIN WITH GOOGLE"
